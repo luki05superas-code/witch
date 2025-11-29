@@ -1,6 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/tlo_glowne">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="end"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp">
+
+        <Button
+            android:id="@+id/button_poziom_1"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:text="POZIOM 1"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#E92BA3"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/button_poziom_2"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:text="POZIOM 2"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#E92BA3"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/button_poziom_3"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:text="POZIOM 3"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#E92BA3"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageButton
+            android:id="@+id/button_wykrzyknik1"
+            android:layout_width="89dp"
+            android:layout_height="91dp"
+            android:background="@null"
+            android:contentDescription="Wykrzyknik"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wykrzyknik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.723" />
+
+        <ImageButton
+            android:id="@+id/button_wykrzyknik2"
+            android:layout_width="89dp"
+            android:layout_height="91dp"
+            android:background="@null"
+            android:contentDescription="Wykrzyknik"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wykrzyknik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.252"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.592" />
+
+        <ImageButton
+            android:id="@+id/button_wykrzyknik3"
+            android:layout_width="89dp"
+            android:layout_height="91dp"
+            android:background="@null"
+            android:contentDescription="Wykrzyknik"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wykrzyknik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.41"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.451" />
+
+        <ImageButton
+            android:id="@+id/button_wykrzyknik4"
+            android:layout_width="89dp"
+            android:layout_height="91dp"
+            android:background="@null"
+            android:contentDescription="Wykrzyknik"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wykrzyknik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.001"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.534" />
+
+        <ImageButton
+            android:id="@+id/button_wykrzyknik5"
+            android:layout_width="89dp"
+            android:layout_height="91dp"
+            android:background="@null"
+            android:contentDescription="Wykrzyknik"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wykrzyknik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.785"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.374" />
+
+        <ImageButton
+            android:id="@+id/button_wykrzyknik6"
+            android:layout_width="89dp"
+            android:layout_height="91dp"
+            android:background="@null"
+            android:contentDescription="Wykrzyknik"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wykrzyknik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.689"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.639" />
+
+        <ImageButton
+            android:id="@+id/button_wykrzyknik7"
+            android:layout_width="89dp"
+            android:layout_height="91dp"
+            android:background="@null"
+            android:contentDescription="Wykrzyknik"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wykrzyknik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.374" />
+
+        <ImageButton
+            android:id="@+id/button_wykrzyknik8"
+            android:layout_width="89dp"
+            android:layout_height="91dp"
+            android:background="@null"
+            android:contentDescription="Wykrzyknik"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wykrzyknik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.597"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.391" />
+
+        <ImageButton
+            android:id="@+id/button_serce"
+            android:layout_width="56dp"
+            android:layout_height="74dp"
+            android:background="@null"
+            android:contentDescription="Serce"
+            android:scaleType="fitCenter"
+            android:src="@drawable/serce"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.836"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.603" />
+
+        <ImageButton
+            android:id="@+id/button_close"
+            android:layout_width="101dp"
+            android:layout_height="92dp"
+            android:background="@null"
+            android:contentDescription="Zamkniecie gry"
+            android:scaleType="fitCenter"
+            android:src="@drawable/zamkniecie"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.03"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.97" />
+
+        <ImageButton
+            android:id="@+id/button_replay"
+            android:layout_width="117dp"
+            android:layout_height="107dp"
+            android:background="@null"
+            android:contentDescription="Graj od poczatku"
+            android:scaleType="fitCenter"
+            android:src="@drawable/powrot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.986"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.974" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
