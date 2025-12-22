@@ -15,6 +15,14 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar timeBar;
     private ImageButton actionButt1;
     private ImageButton actionButt2;
+    private ImageButton actionButt3;
+    private ImageButton actionButt4;
+    private ImageButton actionButt5;
+    private ImageButton actionButt6;
+    private ImageButton actionButt7;
+    private ImageButton actionButt8;
+    private ImageButton replyaButt;
+
     private GameAction actionMakePotion;
     private GameAction actionGoToFly;
 
@@ -28,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
         timeBar = findViewById(R.id.time_bar);
         actionButt1 = findViewById(R.id.button_wykrzyknik1);
         actionButt2 = findViewById(R.id.button_wykrzyknik2);
+        actionButt3 = findViewById(R.id.button_wykrzyknik3);
+        actionButt4 = findViewById(R.id.button_wykrzyknik4);
+        actionButt5 = findViewById(R.id.button_wykrzyknik5);
+        actionButt6 = findViewById(R.id.button_wykrzyknik6);
+        actionButt7 = findViewById(R.id.button_wykrzyknik7);
+        actionButt8 = findViewById(R.id.button_wykrzyknik8);
+        replyaButt = findViewById(R.id.button_replay);
         buttonClose = (ImageButton) findViewById(R.id.button_close);
         energyBar.setMax(100);
         timeBar.setMax(100);
