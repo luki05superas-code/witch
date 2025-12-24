@@ -1,11 +1,11 @@
 package com.example.witch;
 
-public class GameAction {
-    private String description;
-    private int timeCost;
-    private int energyCost;
-    public GameAction(String description, int timeCost,int energyCost){
-        this.description=description;
+public abstract class GameAction {
+    protected String description;
+    protected int timeCost;
+    protected int energyCost;
+    public GameAction( int timeCost,int energyCost){
+
         this.energyCost=energyCost;
         this.timeCost=timeCost;
     }

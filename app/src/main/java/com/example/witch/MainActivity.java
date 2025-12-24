@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout);
         gameModel = new GameModel();
-        actionMakePotion=new GameAction("Uważ eliksir",20,20);
-        actionGoToFly= new GameAction("Idz na trening latania na miotle.", 20, 30);
+        actionMakePotion=new MakePotion(20,20);
+        actionGoToFly= new GoToFly( 20, 30);
         energyBar = findViewById(R.id.energy_bar);
         timeBar = findViewById(R.id.time_bar);
         actionButt1 = findViewById(R.id.button_wykrzyknik1);
