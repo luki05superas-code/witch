@@ -23,15 +23,13 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton actionButt8;
     private ImageButton replyaButt;
 
-    private GameAction actionMakePotion;
-    private GameAction actionGoToFly;
+
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout);
         gameModel = new GameModel();
-        actionMakePotion=new MakePotion(20,20);
-        actionGoToFly= new GoToFly( 20, 30);
+
         energyBar = findViewById(R.id.energy_bar);
         timeBar = findViewById(R.id.time_bar);
         actionButt1 = findViewById(R.id.button_wykrzyknik1);
@@ -46,21 +44,51 @@ public class MainActivity extends AppCompatActivity {
         buttonClose = (ImageButton) findViewById(R.id.button_close);
         energyBar.setMax(100);
         timeBar.setMax(100);
-        actionButt1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                handleActionClick(actionMakePotion);
-            }
-        });
-        actionButt2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                handleActionClick(actionGoToFly);
-            }
-        });
+        setupActionButtons();
         buttonClose.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
             }
         });
+
+    }
+    private void setupActionButtons(){
+        GameAction action1 = gameModel.getAction("wykrzyknik1");
+        if(action1 != null){
+            actionButt1.setOnClickListener(view -> handleActionClick(action1));
+        }
+        GameAction action2 = gameModel.getAction("wykrzyknik2");
+        if(action2 != null){
+            actionButt2.setOnClickListener(view -> handleActionClick(action2));
+        }
+        GameAction action3 = gameModel.getAction("wykrzyknik3");
+        if(action3 != null){
+            actionButt3.setOnClickListener(view -> handleActionClick(action3));
+        }
+        GameAction action4 = gameModel.getAction("wykrzyknik4");
+        if(action4 != null){
+            actionButt4.setOnClickListener(view -> handleActionClick(action4));
+        }
+        GameAction action5 = gameModel.getAction("wykrzyknik5");
+        if(action5 != null){
+            actionButt5.setOnClickListener(view -> handleActionClick(action5));
+        }
+        GameAction action6 = gameModel.getAction("wykrzyknik6");
+        if(action6 != null){
+            actionButt6.setOnClickListener(view -> handleActionClick(action6));
+        }
+        GameAction action7 = gameModel.getAction("wykrzyknik7");
+        if(action7 != null){
+            actionButt7.setOnClickListener(view -> handleActionClick(action7));
+        }
+        GameAction action8 = gameModel.getAction("wykrzyknik8");
+        if(action8 != null){
+            actionButt8.setOnClickListener(view -> handleActionClick(action8));
+        }
+
+
+
+
 
     }
     private void handleActionClick(GameAction action){
