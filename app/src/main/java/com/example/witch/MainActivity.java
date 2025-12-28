@@ -22,13 +22,16 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton actionButt7;
     private ImageButton actionButt8;
     private ImageButton replyaButt;
+    private Button level1Button;
+    private Button level2Button;
+    private Button level3Button;
 
 
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout);
-        gameModel = new GameModel();
+        gameModel = new GameModel(1);
 
         energyBar = findViewById(R.id.energy_bar);
         timeBar = findViewById(R.id.time_bar);
@@ -42,16 +45,31 @@ public class MainActivity extends AppCompatActivity {
         actionButt8 = findViewById(R.id.button_wykrzyknik8);
         replyaButt = findViewById(R.id.button_replay);
         buttonClose = (ImageButton) findViewById(R.id.button_close);
+        level1Button = (Button) findViewById(R.id.button_poziom_1);
+        level2Button = (Button) findViewById(R.id.button_poziom_2);
+        level3Button = (Button) findViewById(R.id.button_poziom_3);
+
         energyBar.setMax(100);
         timeBar.setMax(100);
+        refreshButtons();
+
         setupActionButtons();
         buttonClose.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
             }
         });
+        replyaButt.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                gameModel.resetGame();
+                updateUI();
+            }
+        });
+        updateUI();
+
 
     }
+
     private void setupActionButtons(){
         GameAction action1 = gameModel.getAction("wykrzyknik1");
         if(action1 != null){
@@ -87,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
-
-
     }
     private void handleActionClick(GameAction action){
         boolean success = gameModel.performAction(action.getEnergyCost(),action.getTimeCost());
@@ -103,5 +118,26 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI() {
         energyBar.setProgress(gameModel.getCurrentEnergy());
         timeBar.setProgress(gameModel.getCurrentTime());
+    }
+    private void setupButton(ImageButton btn, String key){
+        GameAction action = gameModel.getAction(key);
+        if(action != null){
+            btn.setVisibility(View.VISIBLE);
+        }
+        else {
+            btn.setVisibility(View.GONE);
+        }
+
+    }
+    private void refreshButtons(){
+        setupButton(actionButt1,"wykrzyknik1");
+        setupButton(actionButt2,"wykrzyknik2");
+        setupButton(actionButt3,"wykrzyknik3");
+        setupButton(actionButt4,"wykrzyknik4");
+        setupButton(actionButt5,"wykrzyknik5");
+        setupButton(actionButt6,"wykrzyknik6");
+        setupButton(actionButt7,"wykrzyknik7");
+        setupButton(actionButt8,"wykrzyknik8");
+
     }
 }

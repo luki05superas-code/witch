@@ -1,5 +1,5 @@
 package com.example.witch;
-import java.util.Random;
+
 public class GoToFly extends GameAction {
     private static final String[] DESCRIPTIONS={
             "Ostatni trening przed zbliżającymi się zawodami.",
@@ -8,8 +8,15 @@ public class GoToFly extends GameAction {
     };
     public GoToFly(int timeCost, int energyCost){
         super(timeCost,energyCost);
-        Random random = new Random();
-        int index = random.nextInt(DESCRIPTIONS.length);
-        this.description = DESCRIPTIONS[index];
+        this.nr_butt=2;
+
+
+    }
+
+    @Override
+    public void updateDescription() {
+        if (this.priority >= 1 && this.priority <= 3){
+            this.description = DESCRIPTIONS[this.priority - 1];
+        }
     }
 }

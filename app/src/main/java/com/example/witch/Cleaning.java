@@ -10,9 +10,17 @@ public class Cleaning extends GameAction{
     };
     public Cleaning(int timeCost, int energyCost){
         super(timeCost,energyCost);
-        Random random = new Random();
-        int index = random.nextInt(DESCRIPTIONS.length);
-        this.description = DESCRIPTIONS[index];
+        this.nr_butt=6;
+       // Random random = new Random();
+       // int index = random.nextInt(DESCRIPTIONS.length);
+       // this.description = DESCRIPTIONS[index];
 
+    }
+
+    @Override
+    public void updateDescription() {
+        if (this.priority >= 1 && this.priority <= 3){
+            this.description = DESCRIPTIONS[this.priority - 1];
+        }
     }
 }

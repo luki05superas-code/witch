@@ -1,5 +1,5 @@
 package com.example.witch;
-import java.util.Random;
+
 public class ReadBook extends GameAction{
     private static final String[] DESCRIPTIONS={
             "Jest do przeczytania lektura na przyszły tydzień na lekcje literatury.",
@@ -8,9 +8,16 @@ public class ReadBook extends GameAction{
     };
     public ReadBook(int timeCost, int energyCost){
         super(timeCost,energyCost);
-        Random random = new Random();
-        int index = random.nextInt(DESCRIPTIONS.length);
-        this.description = DESCRIPTIONS[index];
+        this.nr_butt=5;
 
+
+
+    }
+
+    @Override
+    public void updateDescription() {
+        if (this.priority >= 1 && this.priority <= 3){
+            this.description = DESCRIPTIONS[this.priority - 1];
+        }
     }
 }

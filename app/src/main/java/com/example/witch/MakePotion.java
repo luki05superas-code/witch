@@ -1,6 +1,6 @@
 package com.example.witch;
 
-import java.util.Random;
+
 
 public class MakePotion extends GameAction  {
     private static final String[] DESCRIPTIONS = {
@@ -11,8 +11,15 @@ public class MakePotion extends GameAction  {
     };
     public MakePotion(int timeCost, int energyCost) {
         super(timeCost, energyCost);
-        Random random = new Random();
-        int index = random.nextInt(DESCRIPTIONS.length);
-        this.description = DESCRIPTIONS[index];
+        this.nr_butt=1;
+
+
+    }
+
+    @Override
+    public void updateDescription() {
+        if (this.priority >= 1 && this.priority <= 3){
+            this.description = DESCRIPTIONS[this.priority - 1];
+        }
     }
 }
