@@ -9,7 +9,12 @@ import java.util.Map;
 public class GameModel {
     private int currentEnergy = 80;
     private int currentTime = 80;
+    private int level;
+    private int countMove=0;
+    private int point=0;
     private Map<String, GameAction> actions = new HashMap<>();
+
+
 
     public int getCurrentEnergy(){
         return currentEnergy;
@@ -18,19 +23,36 @@ public class GameModel {
     public int getCurrentTime() {
         return currentTime;
     }
-    public boolean performAction(int energyCost, int timeCost){
-        if (currentEnergy >= energyCost && currentTime >= timeCost) {
-            currentEnergy -= energyCost;
-            currentTime -= timeCost;
+    public boolean performAction(GameAction action){
+        if (currentEnergy >= action.getEnergyCost() && currentTime >= action.getTimeCost()) {
+            currentEnergy -= action.getEnergyCost();
+            currentTime -= action.getTimeCost();;
+            countMove++;
+            int multiplier = (level ==1) ? 2 :3;
+            if(countMove <= (action.getPriority()*multiplier) && countMove > ((action.getPriority()-1)*multiplier)){
+                point+=10;
+            }
+
             return true;
         }
         return false;
     }
-    public GameModel(int level){
-        initializeLevel(level);
+    public void petCat(GameAction blackCat){
+        if (currentTime>=blackCat.getTimeCost() && currentEnergy <= 80){
+            currentTime-=blackCat.getTimeCost();
+            currentEnergy-=blackCat.getEnergyCost();
+
+        }
+
     }
-    // TODO: dodać opcje dla resetowania dla konkretnego poziomu, ewentualnie zmienic tak żeby odrazu ustawiało czynności.
-    private void initializeLevel(int level){
+
+    public GameModel(int level){
+        this.level=level;
+        initializeLevel();
+
+    }
+
+    private void initializeLevel(){
         actions.clear();
         List<GameAction> pool = new ArrayList<>();
         switch (level) {
@@ -73,6 +95,10 @@ public class GameModel {
             actions.put("wykrzyknik" + action.nr_butt, action);
 
         }
+        BlackCat action = new BlackCat(5, -20);
+        actions.put("serce", action);
+
+
 
 
 
@@ -83,5 +109,19 @@ public class GameModel {
     public void resetGame(){
         currentEnergy=80;
         currentTime=80;
+        point=0;
+        countMove=0;
+        resetActions();
+    }
+    public void resetActions(){
+        for (GameAction action : actions.values()){
+            action.done=false;
+        }
+    }
+    public int getPoint(){
+        return point;
+    }
+    public int getCountMove(){
+        return countMove;
     }
 }

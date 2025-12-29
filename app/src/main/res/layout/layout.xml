@@ -4,49 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/tlo_glowne">
+    android:background="@drawable/tlo_glowne"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="end"
+        android:orientation="horizontal"
         android:paddingTop="16dp"
         android:paddingRight="16dp">
 
+        <TextView
+            android:id="@+id/textPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="PUNKTY: 0 "
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            android:textStyle="bold"/>
         <Button
             android:id="@+id/button_poziom_1"
             android:layout_width="140dp"
             android:layout_height="50dp"
-            android:text="POZIOM 1"
             android:layout_marginEnd="16dp"
             android:backgroundTint="#E92BA3"
+            android:gravity="center"
+            android:text="POZIOM 1"
             android:textColor="#000000"
-            android:textSize="20sp"
-            android:gravity="center"/>
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button_poziom_2"
             android:layout_width="140dp"
             android:layout_height="50dp"
-            android:text="POZIOM 2"
             android:layout_marginEnd="16dp"
             android:backgroundTint="#E92BA3"
+            android:gravity="center"
+            android:text="POZIOM 2"
             android:textColor="#000000"
-            android:textSize="20sp"
-            android:gravity="center"/>
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button_poziom_3"
             android:layout_width="140dp"
             android:layout_height="50dp"
-            android:text="POZIOM 3"
             android:layout_marginEnd="16dp"
             android:backgroundTint="#E92BA3"
+            android:gravity="center"
+            android:text="POZIOM 3"
             android:textColor="#000000"
-            android:textSize="20sp"
-            android:gravity="center"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

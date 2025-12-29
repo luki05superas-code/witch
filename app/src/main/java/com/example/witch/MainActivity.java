@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
     private Button level1Button;
     private Button level2Button;
     private Button level3Button;
+    private ImageButton heart;
+    private ImageButton[] buttons;
+    private TextView textPoint;
+
 
 
 
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         energyBar = findViewById(R.id.energy_bar);
         timeBar = findViewById(R.id.time_bar);
+        textPoint = findViewById(R.id.textPoint);
         actionButt1 = findViewById(R.id.button_wykrzyknik1);
         actionButt2 = findViewById(R.id.button_wykrzyknik2);
         actionButt3 = findViewById(R.id.button_wykrzyknik3);
@@ -43,17 +49,35 @@ public class MainActivity extends AppCompatActivity {
         actionButt6 = findViewById(R.id.button_wykrzyknik6);
         actionButt7 = findViewById(R.id.button_wykrzyknik7);
         actionButt8 = findViewById(R.id.button_wykrzyknik8);
+        buttons = new ImageButton[]{actionButt1, actionButt2, actionButt3, actionButt4, actionButt5, actionButt6, actionButt7, actionButt8};
         replyaButt = findViewById(R.id.button_replay);
         buttonClose = (ImageButton) findViewById(R.id.button_close);
         level1Button = (Button) findViewById(R.id.button_poziom_1);
         level2Button = (Button) findViewById(R.id.button_poziom_2);
         level3Button = (Button) findViewById(R.id.button_poziom_3);
+        heart = findViewById(R.id.button_serce);
 
         energyBar.setMax(100);
         timeBar.setMax(100);
-        refreshButtons();
+        setupButtons();
 
-        setupActionButtons();
+
+       heart.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String key = "serce";
+                GameAction action = gameModel.getAction(key);
+                if(action != null){
+
+                    Toast.makeText(MainActivity.this, "Wykonałaś: " + action.getDescription() ,Toast.LENGTH_SHORT).show();
+                    gameModel.petCat(action);
+                    updateUI();
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Błąd...", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
         buttonClose.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
@@ -62,54 +86,50 @@ public class MainActivity extends AppCompatActivity {
         replyaButt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 gameModel.resetGame();
+                setupButtons();
                 updateUI();
             }
         });
+        level1Button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                gameModel = new GameModel(1);
+                setupButtons();
+
+                updateUI();
+
+            }
+        });
+        level2Button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                gameModel = new GameModel(2);
+                setupButtons();
+
+                updateUI();
+            }
+        });
+        level3Button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                gameModel = new GameModel(3);
+                setupButtons();
+
+                updateUI();
+            }
+        });
+
+
+
         updateUI();
 
 
     }
 
-    private void setupActionButtons(){
-        GameAction action1 = gameModel.getAction("wykrzyknik1");
-        if(action1 != null){
-            actionButt1.setOnClickListener(view -> handleActionClick(action1));
-        }
-        GameAction action2 = gameModel.getAction("wykrzyknik2");
-        if(action2 != null){
-            actionButt2.setOnClickListener(view -> handleActionClick(action2));
-        }
-        GameAction action3 = gameModel.getAction("wykrzyknik3");
-        if(action3 != null){
-            actionButt3.setOnClickListener(view -> handleActionClick(action3));
-        }
-        GameAction action4 = gameModel.getAction("wykrzyknik4");
-        if(action4 != null){
-            actionButt4.setOnClickListener(view -> handleActionClick(action4));
-        }
-        GameAction action5 = gameModel.getAction("wykrzyknik5");
-        if(action5 != null){
-            actionButt5.setOnClickListener(view -> handleActionClick(action5));
-        }
-        GameAction action6 = gameModel.getAction("wykrzyknik6");
-        if(action6 != null){
-            actionButt6.setOnClickListener(view -> handleActionClick(action6));
-        }
-        GameAction action7 = gameModel.getAction("wykrzyknik7");
-        if(action7 != null){
-            actionButt7.setOnClickListener(view -> handleActionClick(action7));
-        }
-        GameAction action8 = gameModel.getAction("wykrzyknik8");
-        if(action8 != null){
-            actionButt8.setOnClickListener(view -> handleActionClick(action8));
-        }
 
-
-    }
     private void handleActionClick(GameAction action){
-        boolean success = gameModel.performAction(action.getEnergyCost(),action.getTimeCost());
+        boolean success = gameModel.performAction(action);
         if(success){
             Toast.makeText(this, action.getDescription() + " wykonane!", Toast.LENGTH_SHORT).show();
+            action.done=true;
+            setupButtons();
             updateUI();
         } else {
             Toast.makeText(this, "Brak zasobów do wykonania: " + action.getDescription(), Toast.LENGTH_SHORT).show();
@@ -118,26 +138,27 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI() {
         energyBar.setProgress(gameModel.getCurrentEnergy());
         timeBar.setProgress(gameModel.getCurrentTime());
-    }
-    private void setupButton(ImageButton btn, String key){
-        GameAction action = gameModel.getAction(key);
-        if(action != null){
-            btn.setVisibility(View.VISIBLE);
-        }
-        else {
-            btn.setVisibility(View.GONE);
-        }
+        textPoint.setText("PUNKTY: " + gameModel.getPoint());
 
     }
-    private void refreshButtons(){
-        setupButton(actionButt1,"wykrzyknik1");
-        setupButton(actionButt2,"wykrzyknik2");
-        setupButton(actionButt3,"wykrzyknik3");
-        setupButton(actionButt4,"wykrzyknik4");
-        setupButton(actionButt5,"wykrzyknik5");
-        setupButton(actionButt6,"wykrzyknik6");
-        setupButton(actionButt7,"wykrzyknik7");
-        setupButton(actionButt8,"wykrzyknik8");
+    private void setupButtons(){
+        for(int i=0; i<buttons.length; i++){
+            ImageButton btn = buttons[i];
+            String key = "wykrzyknik" + (i+1);
+
+            GameAction action = gameModel.getAction(key);
+
+            if(action != null && !action.done){
+                btn.setVisibility(View.VISIBLE);
+                btn.setOnClickListener(view -> handleActionClick(action));
+            }
+            else {
+                btn.setVisibility(View.GONE);
+            }
+        }
+
+
 
     }
+
 }

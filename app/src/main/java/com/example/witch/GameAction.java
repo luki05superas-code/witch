@@ -6,6 +6,7 @@ public abstract class GameAction {
     protected int energyCost;
     protected int priority;
     public int nr_butt;
+    public boolean done=false;
 
     public GameAction( int timeCost,int energyCost){
 
