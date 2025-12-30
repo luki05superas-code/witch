@@ -21,7 +21,7 @@
       </SelectionState>
       <SelectionState runConfigName="MainActivity (2)">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-12-25T10:21:48.674423300Z">
+        <DropdownSelection timestamp="2025-12-30T20:10:28.950089400Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Amelia\.android\avd\Medium_Tablet.avd" />

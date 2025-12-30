@@ -169,7 +169,18 @@ public class MainActivity extends AppCompatActivity {
         energyBar.setProgress(gameModel.getCurrentEnergy());
         timeBar.setProgress(gameModel.getCurrentTime());
         textPoint.setText("PUNKTY: " + gameModel.getPoint());
+        checkGameOver();
 
+    }
+    private void checkGameOver(){
+        if(actionButt1.getVisibility() == View.GONE && actionButt2.getVisibility() == View.GONE && actionButt3.getVisibility() == View.GONE &&
+                actionButt4.getVisibility() == View.GONE && actionButt5.getVisibility() == View.GONE && actionButt6.getVisibility() == View.GONE &&
+                actionButt7.getVisibility() == View.GONE && actionButt8.getVisibility() == View.GONE){
+            String text = gameModel.win(gameModel.level);
+            overlayText.setText(text);
+            overlayPanel.setVisibility(View.VISIBLE);
+
+        }
     }
     private void setupButtons(){
         for(int i=0; i<buttons.length; i++){

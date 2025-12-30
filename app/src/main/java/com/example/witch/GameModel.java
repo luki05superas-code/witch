@@ -9,7 +9,7 @@ import java.util.Map;
 public class GameModel {
     private int currentEnergy = 80;
     private int currentTime = 80;
-    private int level;
+    protected int level;
     private int countMove=0;
     private int point=0;
     private Map<String, GameAction> actions = new HashMap<>();
@@ -146,5 +146,18 @@ public class GameModel {
             }
         }
         return allDescription.toString();
+    }
+    public String win(int level){
+        StringBuilder text = new StringBuilder();
+        text.append("Gratulacje ukończenia poziomu.\n Twój wynik to: ")
+                .append(point)
+                .append(" punktów.\n");
+        if(level==1 || level==2){
+            text.append("Spróbuj teraz przejść kolejny poziom.");
+
+        }
+        if(level==3){
+            text.append("Możesz przejść jeszcze raz ten poziom.");}
+        return text.toString();
     }
 }
