@@ -13,6 +13,7 @@ public class GameModel {
     private int countMove=0;
     private int point=0;
     private Map<String, GameAction> actions = new HashMap<>();
+    public GameAction plan;
 
 
 
@@ -44,6 +45,10 @@ public class GameModel {
 
         }
 
+    }
+    public void makePlan(GameAction plan){
+        currentTime-=plan.getTimeCost();
+        plan.done=true;
     }
 
     public GameModel(int level){
@@ -97,6 +102,7 @@ public class GameModel {
         }
         BlackCat action = new BlackCat(5, -20);
         actions.put("serce", action);
+        plan = new DailySchedule(-20, 0);
 
 
 
@@ -117,11 +123,28 @@ public class GameModel {
         for (GameAction action : actions.values()){
             action.done=false;
         }
+        plan.done=false;
     }
     public int getPoint(){
         return point;
     }
     public int getCountMove(){
         return countMove;
+    }
+    public String getAllDescription(){
+        StringBuilder allDescription = new StringBuilder();
+        allDescription.append("Czynności do wykonania:\n");
+        for (GameAction action : actions.values()){
+            if(action != null && action.getDescription()!=null){
+                allDescription.append("- ")
+                        .append(action.getDescription())
+                        .append(" czas wykonania: ")
+                        .append(action.getTimeCost())
+                        .append(", energia: ")
+                        .append(action.getEnergyCost())
+                        .append("\n");
+            }
+        }
+        return allDescription.toString();
     }
 }

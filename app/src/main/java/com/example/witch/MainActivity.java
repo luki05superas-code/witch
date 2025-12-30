@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton heart;
     private ImageButton[] buttons;
     private TextView textPoint;
+    LinearLayout overlayPanel;
+    TextView overlayText;
+    Button closeOverlayButton;
+    Button planButton;
 
 
 
@@ -56,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
         level2Button = (Button) findViewById(R.id.button_poziom_2);
         level3Button = (Button) findViewById(R.id.button_poziom_3);
         heart = findViewById(R.id.button_serce);
+        overlayPanel = findViewById(R.id.overlayPanel);
+        overlayText = findViewById(R.id.overlayText);
+        closeOverlayButton = findViewById(R.id.closeOverlayButton);
+        planButton = findViewById(R.id.button_plan);
+
 
         energyBar.setMax(100);
         timeBar.setMax(100);
@@ -115,6 +125,26 @@ public class MainActivity extends AppCompatActivity {
                 updateUI();
             }
         });
+        closeOverlayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                overlayPanel.setVisibility(View.GONE); // Ukrywamy panel
+            }
+        });
+        planButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String description = gameModel.getAllDescription();
+                overlayText.setText(description);
+                overlayPanel.setVisibility(View.VISIBLE); // Pokazujemy panel
+                if(!gameModel.plan.done){
+                    gameModel.makePlan(gameModel.plan);
+                    updateUI();
+
+                }
+            }
+        });
+
 
 
 
