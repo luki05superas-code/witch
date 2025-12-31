@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Wykonałaś: " + action.getDescription() ,Toast.LENGTH_SHORT).show();
                     gameModel.petCat(action);
                     updateUI();
+                    checkGameOver();
                 }
                 else{
                     Toast.makeText(MainActivity.this, "Błąd...", Toast.LENGTH_SHORT).show();
@@ -175,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
             action.done=true;
             setupButtons();
             updateUI();
+            checkGameOver();
         } else {
             Toast.makeText(this, "Brak zasobów do wykonania: " + action.getDescription(), Toast.LENGTH_SHORT).show();
         }
@@ -183,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         energyBar.setProgress(gameModel.getCurrentEnergy());
         timeBar.setProgress(gameModel.getCurrentTime());
         textPoint.setText("PUNKTY: " + gameModel.getPoint());
-        checkGameOver();
+
 
     }
     private void checkGameOver(){
@@ -194,6 +196,13 @@ public class MainActivity extends AppCompatActivity {
             overlayText.setText(text);
             overlayPanel.setVisibility(View.VISIBLE);
 
+        }
+        else if(gameModel.getCurrentTime()==0 && gameModel.plan.done){
+            overlayText.setText("Nie masz już zasobów na wykonywanie czynności. Spróbuj jeszcze raz.");
+            overlayPanel.setVisibility(View.VISIBLE);
+            gameModel.resetGame();
+            setupButtons();
+            updateUI();
         }
     }
     private void setupButtons(){
