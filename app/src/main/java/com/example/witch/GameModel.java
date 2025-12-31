@@ -151,13 +151,14 @@ public class GameModel {
         StringBuilder text = new StringBuilder();
         text.append("Gratulacje ukończenia poziomu.\n Twój wynik to: ")
                 .append(point)
-                .append(" punktów.\n");
-        if(level==1 || level==2){
-            text.append("Spróbuj teraz przejść kolejny poziom.");
+                .append(" punktów ");
+        if(level==1){
+            text.append("na 60 punktów możliwych do zdobycia.\n");
 
         }
-        if(level==3){
-            text.append("Możesz przejść jeszcze raz ten poziom.");}
+        if(level==2 ||level==3){
+            text.append("na 80 punktów możliwych do zdobycia.\n");}
+        text.append("Możesz przejść jeszcze raz ten poziom lub wybrać inny poziom.\n");
         return text.toString();
     }
 }

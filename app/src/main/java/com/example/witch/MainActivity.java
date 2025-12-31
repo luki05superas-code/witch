@@ -1,6 +1,9 @@
 package com.example.witch;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -70,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         energyBar.setMax(100);
         timeBar.setMax(100);
         setupButtons();
+        level1Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#62FDBA")));
+
 
 
        heart.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 gameModel = new GameModel(1);
                 setupButtons();
+                level1Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#62FDBA")));
+                level2Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E92BA3")));
+                level3Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E92BA3")));
 
                 updateUI();
 
@@ -113,6 +121,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 gameModel = new GameModel(2);
                 setupButtons();
+                level2Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#62FDBA")));
+                level1Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E92BA3")));
+                level3Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E92BA3")));
 
                 updateUI();
             }
@@ -121,6 +132,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 gameModel = new GameModel(3);
                 setupButtons();
+                level3Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#62FDBA")));
+                level2Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E92BA3")));
+                level1Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E92BA3")));
 
                 updateUI();
             }
