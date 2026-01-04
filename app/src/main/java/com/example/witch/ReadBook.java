@@ -1,6 +1,9 @@
 package com.example.witch;
 
+/** Klasa opisująca jedną z czynności do wykonania w grze */
 public class ReadBook extends GameAction{
+
+    /** tablica z opisami czynności, po nadaniu priorytetu przypisywanay jest odpowiedni opis z tej tablicy */
     private static final String[] DESCRIPTIONS={
             "Jest do przeczytania lektura na przyszły tydzień na lekcje literatury.",
             "Na półce czeka wypożyczona książka z biblioteki o historii magicznych królestw.",
@@ -13,7 +16,7 @@ public class ReadBook extends GameAction{
 
 
     }
-
+    /** Metoda aktualizująca opis czynności.*/
     @Override
     public void updateDescription() {
         if (this.priority >= 1 && this.priority <= 3){

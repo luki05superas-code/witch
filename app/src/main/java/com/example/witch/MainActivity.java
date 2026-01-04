@@ -12,12 +12,17 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
+/** Klasa reprezentująca ekran gry.*/
 public class MainActivity extends AppCompatActivity {
-    private ImageButton buttonClose;
+    /** Model gry, reprezentujący także aktualny stan gry */
     private GameModel gameModel;
+    /** progres bar pokazujący dostępną energię, maksymalna wartość to 100, minimalna to 0 */
     private ProgressBar energyBar;
+    /** progres bar pokazujący dostępny czas, maksymalna wartość to 100, minimalna to 0 */
     private ProgressBar timeBar;
+    /** Przycisk zamykający grę */
+    private ImageButton buttonClose;
+    /** Przyciski reprezentujące poszczególne czynności do wykonania */
     private ImageButton actionButt1;
     private ImageButton actionButt2;
     private ImageButton actionButt3;
@@ -26,17 +31,30 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton actionButt6;
     private ImageButton actionButt7;
     private ImageButton actionButt8;
-    private ImageButton replyaButt;
-    private Button level1Button;
-    private Button level2Button;
-    private Button level3Button;
     private ImageButton heart;
+    private Button planButton;
+
+    /** Tablica przycisków reprezentujących poszczególne czynności do wykonania, znajdują się w niej tylko te, które są dostępne i są to actionButtX  */
     private ImageButton[] buttons;
+    /** Przycisk do przejścia do 1 poziomu. */
+    private Button level1Button;
+    /** Przycisk do przejścia do 2 poziomu. */
+    private Button level2Button;
+    /** Przycisk do przejścia do 3 poziomu. */
+    private Button level3Button;
+    /** Przycisk do replayu gry, z takimi samym GameModel. */
+    private ImageButton replyaButt;
+
+    /** Tekst wyświetlający aktualny wynik gry. */
     private TextView textPoint;
-    LinearLayout overlayPanel;
-    TextView overlayText;
-    Button closeOverlayButton;
-    Button planButton;
+    /** Panel do wyświetlania planu dnia, ale także powitania gracza, informacji o zakończeniu rozgrywki.
+     * Wyświetlany nad głównym interfejsem gry. */
+    private LinearLayout overlayPanel;
+    /** Pole tekstowe wewnątrz panelu slużące do wyświetlania komuikatów. */
+    private TextView overlayText;
+    /** Przycisk zamykający panel. */
+    private Button closeOverlayButton;
+
 
 
 
@@ -74,32 +92,39 @@ public class MainActivity extends AppCompatActivity {
         timeBar.setMax(100);
         setupButtons();
         level1Button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#62FDBA")));
+        hello();
+
 
 
 
        heart.setOnClickListener(new View.OnClickListener() {
+           // Obsługa kliknięcia przycisku serce
             public void onClick(View v) {
                 String key = "serce";
                 GameAction action = gameModel.getAction(key);
-                if(action != null){
+                boolean success = gameModel.petCat(action);
+                if(success){
 
-                    Toast.makeText(MainActivity.this, "Wykonałaś: " + action.getDescription() ,Toast.LENGTH_SHORT).show();
-                    gameModel.petCat(action);
+                    Toast.makeText(MainActivity.this,  action.getDescription() ,Toast.LENGTH_SHORT).show();
                     updateUI();
                     checkGameOver();
                 }
                 else{
-                    Toast.makeText(MainActivity.this, "Błąd...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Za mało dostępnego czasu lub nie możesz zdobyć więcej energi.", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
+
         buttonClose.setOnClickListener(new View.OnClickListener() {
+            // Obsługa kliknięcia przycisku X (wyjścia z gry)
             public void onClick(View v) {
                 finish();
             }
         });
+
         replyaButt.setOnClickListener(new View.OnClickListener() {
+            // Obsługa kliknięcia przycisku Replay (reset aktualnego poziomu)
             public void onClick(View v) {
                 gameModel.resetGame();
                 setupButtons();
@@ -107,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         level1Button.setOnClickListener(new View.OnClickListener() {
+           // Obsługa kliknięcia przycisku poziom 1, zmiany kolorów przycisków i ustawienie nowego poziomu gry
             public void onClick(View v) {
                 gameModel = new GameModel(1);
                 setupButtons();
@@ -119,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         level2Button.setOnClickListener(new View.OnClickListener() {
+            // Obsługa kliknięcia przycisku poziom 2, zmiany kolorów przycisków i ustawienie nowego poziomu gry
             public void onClick(View v) {
                 gameModel = new GameModel(2);
                 setupButtons();
@@ -130,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         level3Button.setOnClickListener(new View.OnClickListener() {
+            // Obsługa kliknięcia przycisku poziom 3, zmiany kolorów przycisków i ustawienie nowego poziomu gry
             public void onClick(View v) {
                 gameModel = new GameModel(3);
                 setupButtons();
@@ -141,12 +169,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         closeOverlayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
+            // Obsługa kliknięcia przycisku zamykającego panel
             public void onClick(View v) {
                 overlayPanel.setVisibility(View.GONE); // Ukrywamy panel
+                closeOverlayButton.setText("ZAMKNIJ");
             }
         });
         planButton.setOnClickListener(new View.OnClickListener() {
+           // Obsługa kliknięcia przycisku planu, który pokazuje plan na panelu
             @Override
             public void onClick(View v) {
                 String description = gameModel.getAllDescription();
@@ -167,12 +197,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    private void hello (){
+        overlayText.setText("Miło Cię widzieć osobo!!!\n Czy tak jak nasza młoda czarownica masz problem z planowaniem?\n " +
+                "Jeśli tak to mamy nadzieję że tak gra choć trochę Ci pomoże " +
+                "w lepszym rozplanowaniu co jest ważne i trzeba do zrobić jak najszybciej, a co może poczekać.\n" +
+                "W PLANIE DNIA znajdziesz opisy czynności do wykonania, zastanów się co jest najważniejsze do zrobienia a co mniej ważne, wykonaj w tej kolejności czynności.");
+        closeOverlayButton.setText("ZAGRAJ");
+        overlayPanel.setVisibility(View.VISIBLE);
+    }
 
-
+/** Obsługa kliknięcia przycisku wykrzyknika */
     private void handleActionClick(GameAction action){
         boolean success = gameModel.performAction(action);
         if(success){
-            Toast.makeText(this, action.getDescription() + " wykonane!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, action.getDescription() + " Wykonane!", Toast.LENGTH_SHORT).show();
             action.done=true;
             setupButtons();
             updateUI();
@@ -181,6 +219,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Brak zasobów do wykonania: " + action.getDescription(), Toast.LENGTH_SHORT).show();
         }
     }
+
+    /** Aktualizacja pasków energii i czasu oraz wyświetlanych punktów */
     private void updateUI() {
         energyBar.setProgress(gameModel.getCurrentEnergy());
         timeBar.setProgress(gameModel.getCurrentTime());
@@ -188,6 +228,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    /** Sprawdzenie, czy poziom została zakończony i wyświetlenie odpowiedniego komunikatu */
     private void checkGameOver(){
         if(actionButt1.getVisibility() == View.GONE && actionButt2.getVisibility() == View.GONE && actionButt3.getVisibility() == View.GONE &&
                 actionButt4.getVisibility() == View.GONE && actionButt5.getVisibility() == View.GONE && actionButt6.getVisibility() == View.GONE &&
@@ -205,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
             updateUI();
         }
     }
+    /** Ustawienie odpowiednich parametrów widoczności przycisków wykrzykników na podstawie ich statusu */
     private void setupButtons(){
         for(int i=0; i<buttons.length; i++){
             ImageButton btn = buttons[i];
