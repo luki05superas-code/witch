@@ -199,9 +199,9 @@ public class MainActivity extends AppCompatActivity {
     }
     private void hello (){
         overlayText.setText("Miło Cię widzieć osobo!!!\n Czy tak jak nasza młoda czarownica masz problem z planowaniem?\n " +
-                "Jeśli tak to mamy nadzieję że tak gra choć trochę Ci pomoże " +
-                "w lepszym rozplanowaniu co jest ważne i trzeba do zrobić jak najszybciej, a co może poczekać.\n" +
-                "W PLANIE DNIA znajdziesz opisy czynności do wykonania, zastanów się co jest najważniejsze do zrobienia a co mniej ważne, wykonaj w tej kolejności czynności.");
+                "Jeśli tak to mamy nadzieję, że tak gra choć trochę Ci pomoże " +
+                "w lepszym rozplanowaniu, co jest ważne i trzeba to zrobić jak najszybciej, a co może poczekać.\n" +
+                "W PLANIE DNIA znajdziesz opisy czynności do wykonania. Zastanów się, co jest najważniejsze do zrobienia, a co mniej ważne, wykonaj w tej kolejności czynności.");
         closeOverlayButton.setText("ZAGRAJ");
         overlayPanel.setVisibility(View.VISIBLE);
     }

@@ -6,7 +6,7 @@ public class GoToFly extends GameAction {
     private static final String[] DESCRIPTIONS={
             "Ostatni trening przed zbliżającymi się zawodami.",
             "Musisz poćwiczyć technikę, aby na kolejny sezon dostać się do reprezentacji narodowej.",
-            " Koleżanki z drużyny po ostatnich wygranych zawodach stwierdziły, że dla przyjemności lecą na Babią Górę."
+            "Koleżanki z drużyny po ostatnich wygranych zawodach stwierdziły, że dla przyjemności lecą na Babią Górę."
     };
     /** Konstruktor przyjmujący czas i energię potrzebne do wykonania czynności i przypisujący jej nr przycisku.*/
     public GoToFly(int timeCost, int energyCost){

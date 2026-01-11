@@ -7,8 +7,8 @@ public class MakePotion extends GameAction  {
     /** tablica z opisami czynności, po nadaniu priorytetu przypisywanay jest odpowiedni opis z tej tablicy */
     private static final String[] DESCRIPTIONS = {
      "Uwarz eliksir na jutrzejsze zajęcia.",
-            "Uwarz eliksir na dobrą pamięć dla babci na prezent z okazji imienin, które ma w przyszłym tygodniu.",
-            "Uwarz eliksiry na przyszło-miesięczny konkurs Najlepszy eliksir."
+            "Uwarz eliksir na dobrą pamięć dla babci jako prezent z okazji jej imienin, które ma w przyszłym tygodniu.",
+            "Uwarz eliksiry na przyszło-miesięczny konkurs Najlepszy Eliksir."
 
     };
     /** Konstruktor przyjmujący czas i energię potrzebne do wykonania czynności i przypisujący jej nr przycisku.*/

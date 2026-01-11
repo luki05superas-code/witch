@@ -7,7 +7,7 @@ public class PlantCare extends GameAction {
     /** tablica z opisami czynności, po nadaniu priorytetu przypisywanay jest odpowiedni opis z tej tablicy */
     private static final String[] DESCRIPTIONS ={
             "Roślinki prawie usychają, trzeba o nie zadbać.",
-            "Roślinki wymagają małej pielęgnacji.",
+            "Roślinki wymagają niewielkiej pielęgnacji.",
             "Roślinki są powoli gotowe do zbioru."
     };
     /** Konstruktor przyjmujący czas i energię potrzebne do wykonania czynności i przypisujący jej nr przycisku.*/
