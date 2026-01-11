@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-/** Klasa reprezentująca ekran gry.*/
+/** Klasa reprezentująca ekran gry (Activity).
+ * Zarządza interfejsem użytkownika, obsługuje zdarzenia kliknięcia
+ * oraz komunikuje się z modelem gry (GameModel).*/
 public class MainActivity extends AppCompatActivity {
     /** Model gry, reprezentujący także aktualny stan gry */
     private GameModel gameModel;
@@ -106,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
        heart.setOnClickListener(new View.OnClickListener() {
            // Obsługa kliknięcia przycisku serce
             public void onClick(View v) {
-                String key = "serce";
-                GameAction action = gameModel.getAction(key);
+
+                GameAction action = gameModel.blackCat;
                 boolean success = gameModel.petCat(action);
                 if(success){
 
@@ -204,11 +206,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void hello (){
-        overlayText.setText("Miło Cię widzieć osobo!!!\n Czy tak jak nasza młoda czarownica masz problem z planowaniem?\n " +
+        String text ="Miło Cię widzieć osobo!!!\n Czy tak jak nasza młoda czarownica masz problem z planowaniem?\n " +
                 "Jeśli tak to mamy nadzieję, że tak gra choć trochę Ci pomoże " +
                 "w lepszym rozplanowaniu, co jest ważne i trzeba to zrobić jak najszybciej, a co może poczekać.\n" +
-                "W PLANIE DNIA znajdziesz opisy czynności do wykonania. Zastanów się, co jest najważniejsze do zrobienia, a co mniej ważne, wykonaj w tej kolejności czynności.");
-        closeOverlayButton.setText("ZAGRAJ");
+                "W PLANIE DNIA znajdziesz opisy czynności do wykonania. Zastanów się, co jest najważniejsze do zrobienia, a co mniej ważne, wykonaj w tej kolejności czynności.";
+        String textBut= "ZAGRAJ";
+        overlayText.setText(text);
+        closeOverlayButton.setText(textBut);
         overlayPanel.setVisibility(View.VISIBLE);
     }
 
@@ -228,6 +232,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** Aktualizacja pasków energii i czasu oraz wyświetlanych punktów */
     private void updateUI() {
+
         energyBar.setProgress(gameModel.getCurrentEnergy());
         textEnergy.setText("Dostępna energia: " + gameModel.getCurrentEnergy());
         timeBar.setProgress(gameModel.getCurrentTime());

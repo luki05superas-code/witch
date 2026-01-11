@@ -23,6 +23,8 @@ public class GameModel {
     // Łatwiej było ją zdefiniować jako osobną zmienną niż dodawać do HsahMap
     /** Zmienna reprezentująca czynność wykonania planu.*/
     public GameAction plan;
+    public GameAction blackCat;
+
 
 /** Konstruktor inicjalizujący stan gry,
  * @param level poziom gry.*/
@@ -128,8 +130,8 @@ public class GameModel {
             actions.put("wykrzyknik" + action.nr_butt, action);
 
         }
-        BlackCat action = new BlackCat(5, -20);
-        actions.put("serce", action);
+        blackCat = new BlackCat(5, -20);
+
         plan = new DailySchedule(-20, 0);
 
 
@@ -163,7 +165,7 @@ public class GameModel {
     }
 
     /** Metoda zwracająca opis wszystkich aktywności na stanie gry.
-     * @return opis wszystkich aktywności wpisanych do HashMap na stanie gry.*/
+     * @return opis wszystkich aktywności wpisanych do HashMap na stanie gry oraz głaskania kota.*/
     public String getAllDescription(){
         StringBuilder allDescription = new StringBuilder();
         allDescription.append("Czynności do wykonania:\n");
@@ -178,6 +180,9 @@ public class GameModel {
                         .append("\n");
             }
         }
+        allDescription.append("- Pogłaskanie kota ma czas wykonania: ")
+                .append(blackCat.getTimeCost())
+                .append(" i dodaje energię. Możesz je wykonać jeśli nie masz więcej energii niż 80.");
         return allDescription.toString();
     }
     /** Metoda zwracająca tekst zakończenia gry.
