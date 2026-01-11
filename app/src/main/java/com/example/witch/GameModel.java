@@ -168,7 +168,7 @@ public class GameModel {
         StringBuilder allDescription = new StringBuilder();
         allDescription.append("Czynności do wykonania:\n");
         for (GameAction action : actions.values()){
-            if(action != null && action.getDescription()!=null){
+            if(action != null && action.getDescription()!=null && !action.done){
                 allDescription.append("- ")
                         .append(action.getDescription())
                         .append(" czas wykonania: ")

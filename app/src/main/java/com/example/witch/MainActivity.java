@@ -18,8 +18,12 @@ public class MainActivity extends AppCompatActivity {
     private GameModel gameModel;
     /** progres bar pokazujący dostępną energię, maksymalna wartość to 100, minimalna to 0 */
     private ProgressBar energyBar;
+    /** pole tekstowe na wypisanie dostępnej energi */
+    private TextView textEnergy;
     /** progres bar pokazujący dostępny czas, maksymalna wartość to 100, minimalna to 0 */
     private ProgressBar timeBar;
+    /** pole tekstowe na wypisanie dostępnego czasu */
+    private TextView textTime;
     /** Przycisk zamykający grę */
     private ImageButton buttonClose;
     /** Przyciski reprezentujące poszczególne czynności do wykonania */
@@ -66,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
         energyBar = findViewById(R.id.energy_bar);
         timeBar = findViewById(R.id.time_bar);
+        textEnergy = findViewById(R.id.textEnergy);
+        textTime = findViewById(R.id.textTime);
         textPoint = findViewById(R.id.textPoint);
         actionButt1 = findViewById(R.id.button_wykrzyknik1);
         actionButt2 = findViewById(R.id.button_wykrzyknik2);
@@ -223,7 +229,9 @@ public class MainActivity extends AppCompatActivity {
     /** Aktualizacja pasków energii i czasu oraz wyświetlanych punktów */
     private void updateUI() {
         energyBar.setProgress(gameModel.getCurrentEnergy());
+        textEnergy.setText("Dostępna energia: " + gameModel.getCurrentEnergy());
         timeBar.setProgress(gameModel.getCurrentTime());
+        textTime.setText("Dostępny czas: " + gameModel.getCurrentTime());
         textPoint.setText("PUNKTY: " + gameModel.getPoint());
 
 
