@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Witch</string>
     <string name="wykrzyknik">Wykrzyknik</string>
+    <string name="energy_lable">Dostępna energia: %1$d</string>
+    <string name="time_lable">Dostępny czas: %1$d</string>
+    <string name="point_lable">Punkty: %1$d</string>
+
 </resources>

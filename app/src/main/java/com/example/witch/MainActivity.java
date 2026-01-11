@@ -234,10 +234,10 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI() {
 
         energyBar.setProgress(gameModel.getCurrentEnergy());
-        textEnergy.setText("Dostępna energia: " + gameModel.getCurrentEnergy());
+        textEnergy.setText(getString(R.string.energy_lable, gameModel.getCurrentEnergy()));
         timeBar.setProgress(gameModel.getCurrentTime());
-        textTime.setText("Dostępny czas: " + gameModel.getCurrentTime());
-        textPoint.setText("PUNKTY: " + gameModel.getPoint());
+        textTime.setText(getString(R.string.time_lable, gameModel.getCurrentTime()));
+        textPoint.setText(getString(R.string.point_lable, gameModel.getPoint()));
 
 
     }
