@@ -85,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
         actionButt8 = findViewById(R.id.button_wykrzyknik8);
         buttons = new ImageButton[]{actionButt1, actionButt2, actionButt3, actionButt4, actionButt5, actionButt6, actionButt7, actionButt8};
         replyaButt = findViewById(R.id.button_replay);
-        buttonClose = (ImageButton) findViewById(R.id.button_close);
-        level1Button = (Button) findViewById(R.id.button_poziom_1);
-        level2Button = (Button) findViewById(R.id.button_poziom_2);
-        level3Button = (Button) findViewById(R.id.button_poziom_3);
+        buttonClose = findViewById(R.id.button_close);
+        level1Button = findViewById(R.id.button_poziom_1);
+        level2Button = findViewById(R.id.button_poziom_2);
+        level3Button = findViewById(R.id.button_poziom_3);
         heart = findViewById(R.id.button_serce);
         overlayPanel = findViewById(R.id.overlayPanel);
         overlayText = findViewById(R.id.overlayText);
