@@ -64,12 +64,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+    /**
+     * Inicjalizuje aktywność, wiąże komponenty interfejsu z układem XML,
+     * konfiguruje model gry oraz ustawia słuchacze zdarzeń dla wszystkich przycisków.
+     *
+     * @param savedInstanceState Jeśli aktywność jest odtwarzana, zawiera dane przekazane w tej paczce.
+     */
+    @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout);
         gameModel = new GameModel(1);
-
+        // Inicjalizacja widoków
         energyBar = findViewById(R.id.energy_bar);
         timeBar = findViewById(R.id.time_bar);
         textEnergy = findViewById(R.id.textEnergy);
@@ -180,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
             // Obsługa kliknięcia przycisku zamykającego panel
             public void onClick(View v) {
                 overlayPanel.setVisibility(View.GONE); // Ukrywamy panel
-                closeOverlayButton.setText("ZAMKNIJ");
+                closeOverlayButton.setText(getString(R.string.button_close));
             }
         });
         planButton.setOnClickListener(new View.OnClickListener() {
@@ -205,14 +211,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    /** Metoda wyświetlająca tekst powitania gracza. */
     private void hello (){
-        String text ="Miło Cię widzieć osobo!!!\n Czy tak jak nasza młoda czarownica masz problem z planowaniem?\n " +
-                "Jeśli tak to mamy nadzieję, że tak gra choć trochę Ci pomoże " +
-                "w lepszym rozplanowaniu, co jest ważne i trzeba to zrobić jak najszybciej, a co może poczekać.\n" +
-                "W PLANIE DNIA znajdziesz opisy czynności do wykonania. Zastanów się, co jest najważniejsze do zrobienia, a co mniej ważne, wykonaj w tej kolejności czynności.";
-        String textBut= "ZAGRAJ";
-        overlayText.setText(text);
-        closeOverlayButton.setText(textBut);
+
+        overlayText.setText(getString(R.string.hello_text));
+        closeOverlayButton.setText(getString(R.string.button_close1));
         overlayPanel.setVisibility(View.VISIBLE);
     }
 
@@ -253,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else if(gameModel.getCurrentTime()==0 && gameModel.plan.done){
-            overlayText.setText("Nie masz już zasobów na wykonywanie czynności. Spróbuj jeszcze raz.");
+            overlayText.setText(getString(R.string.reply_text));
             overlayPanel.setVisibility(View.VISIBLE);
             gameModel.resetGame();
             setupButtons();
