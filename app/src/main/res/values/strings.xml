@@ -7,9 +7,9 @@
     <string name="button_close">ZAMKNIJ</string>
     <string name="button_close1">ZAGRAJ</string>
     <string name="reply_text">Nie masz już zasobów na wykonywanie czynności. Spróbuj jeszcze raz.</string>
-    <string name="hello_text">"Miło Cię widzieć osobo!!!\n Czy tak jak nasza młoda czarownica masz problem z planowaniem?\n " +
-                "Jeśli tak to mamy nadzieję, że tak gra choć trochę Ci pomoże " +
-                "w lepszym rozplanowaniu, co jest ważne i trzeba to zrobić jak najszybciej, a co może poczekać.\n" +
+    <string name="hello_text">"Miło Cię widzieć osobo!!!\n Czy tak jak nasza młoda czarownica masz problem z planowaniem?\n "
+                "Jeśli tak to mamy nadzieję, że tak gra choć trochę Ci pomoże "
+                "w lepszym rozplanowaniu, co jest ważne i trzeba to zrobić jak najszybciej, a co może poczekać.\n"
                 "W PLANIE DNIA znajdziesz opisy czynności do wykonania. Zastanów się, co jest najważniejsze do zrobienia, a co mniej ważne, wykonaj w tej kolejności czynności.</string>
 
 </resources>
